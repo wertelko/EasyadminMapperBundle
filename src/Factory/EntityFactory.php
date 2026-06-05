@@ -1,9 +1,9 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Factory;
+namespace Wertelko\EasyadminMapperBundle\Factory;
 
-use Wertelko\EasyadminContentBundle\Collection\EntityCollection;
-use Wertelko\EasyadminContentBundle\Dto\EntityDto;
+use Wertelko\EasyadminMapperBundle\Collection\EntityCollection;
+use Wertelko\EasyadminMapperBundle\Dto\EntityDto;
 use Doctrine\Common\Util\ClassUtils;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\Persistence\ManagerRegistry;

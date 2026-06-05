@@ -1,6 +1,6 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Dto\Filter;
+namespace Wertelko\EasyadminMapperBundle\Dto\Filter;
 
 class FilterDto
 {

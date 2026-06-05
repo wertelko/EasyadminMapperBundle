@@ -1,6 +1,6 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Config;
+namespace Wertelko\EasyadminMapperBundle\Config;
 
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 

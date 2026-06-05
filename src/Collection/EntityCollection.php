@@ -1,8 +1,8 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Collection;
+namespace Wertelko\EasyadminMapperBundle\Collection;
 
-use Wertelko\EasyadminContentBundle\Dto\EntityDto;
+use Wertelko\EasyadminMapperBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Collection\CollectionInterface;
 
 /**

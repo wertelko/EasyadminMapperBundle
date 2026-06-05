@@ -1,8 +1,8 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Factory;
+namespace Wertelko\EasyadminMapperBundle\Factory;
 
-use Wertelko\EasyadminContentBundle\Dto\EntityDto;
+use Wertelko\EasyadminMapperBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto;
 
@@ -42,7 +42,7 @@ class FieldFactory
             }
 
             if (null === $fieldDto->getTemplatePath()) {
-                $fieldDto->setTemplatePath('admin/crud/field/text.html.twig');
+                $fieldDto->setTemplatePath('@EasyadminMapper/crud/field/text.html.twig');
             }
         }
 

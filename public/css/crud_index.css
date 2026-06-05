@@ -1,0 +1,3 @@
+.action-filters-applied i, .action-filters-applied span {
+    color: var(--color-primary);
+}

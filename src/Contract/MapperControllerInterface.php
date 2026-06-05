@@ -1,8 +1,8 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Contract;
+namespace Wertelko\EasyadminMapperBundle\Contract;
 
-use Wertelko\EasyadminContentBundle\Config\EntityConfig;
+use Wertelko\EasyadminMapperBundle\Config\EntityConfig;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 interface MapperControllerInterface

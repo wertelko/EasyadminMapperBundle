@@ -1,6 +1,6 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Filter;
+namespace Wertelko\EasyadminMapperBundle\Filter;
 
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterInterface;

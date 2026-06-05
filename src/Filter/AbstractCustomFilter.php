@@ -1,6 +1,6 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Filter;
+namespace Wertelko\EasyadminMapperBundle\Filter;
 
 class AbstractCustomFilter
 {

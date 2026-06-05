@@ -1,8 +1,8 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Config;
+namespace Wertelko\EasyadminMapperBundle\Config;
 
-use Wertelko\EasyadminContentBundle\Dto\FilterDto;
+use Wertelko\EasyadminMapperBundle\Dto\FilterDto;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 
@@ -20,7 +20,7 @@ class FiltersConfig
      * @param callable|null $callback fn(Entity $entity, string $value)
      *        null callback used for stub filter. In this case you might use \App\Shared\Infrastructure\Symfony\Bundle\EasyAdmin\Dto\Filter\FilterDto as argument resolver
      * @return $this
-     * @see \Wertelko\EasyadminContentBundle\Dto\Filter\FilterDto
+     * @see \Wertelko\EasyadminMapperBundle\Dto\Filter\FilterDto
      */
     public function add(string|FilterInterface $filter, callable $callback = null): static
     {

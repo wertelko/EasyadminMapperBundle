@@ -6,7 +6,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Wertelko\\EasyadminContentBundle\\": "src/"
+            "Wertelko\\EasyadminMapperBundle\\": "src/"
         }
     },
     "authors": [

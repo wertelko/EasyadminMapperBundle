@@ -3,13 +3,8 @@
 {# @var filter \EasyCorp\Bundle\EasyAdminBundle\Dto\FilterDto #}
 {% extends '@EasyAdmin/page/content.html.twig' %}
 {% set has_batch_actions = batch_actions|length > 0 %}
-
 {% block page_title (title) %}
 
-{% block head_stylesheets %}
-    <link rel="stylesheet" href="{{ asset('app.css', ea.assets.defaultAssetPackageName) }}">
-    <link rel="stylesheet" href="{{ asset('css/admin/custom.css') }}">
-{% endblock %}
 
 {% block content_title title ?? 'Unnamed' %}
 
@@ -56,7 +51,7 @@
     {% endblock page_actions %}
 
     {% block main %}
-        <link rel="stylesheet" href="{{ asset('css/admin/custom_crud_index.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/easyadminmapper/css/crud_index.css') }}">
         {# sort can be multiple; let's consider the sorting field the first one #}
         {% set sort_field_name = app.request.get('sort')|keys|first %}
         {% set sort_order = app.request.get('sort')|first %}

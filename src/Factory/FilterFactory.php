@@ -1,8 +1,8 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Factory;
+namespace Wertelko\EasyadminMapperBundle\Factory;
 
-use Wertelko\EasyadminContentBundle\Dto\FilterDto;
+use Wertelko\EasyadminMapperBundle\Dto\FilterDto;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\ArrayFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;

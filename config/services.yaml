@@ -4,3 +4,16 @@ services:
         autoconfigure: true
         public: false
 
+    Wertelko\EasyadminMapperBundle\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/EasyadminMapperBundle.php'
+            - '../src/Dto/'
+            - '../src/Config/'
+            - '../src/Collection/'
+            - '../src/Contract/'
+
+    Wertelko\EasyadminMapperBundle\ArgumentResolver\BatchActionDtoValueResolver:
+        tags:
+            - { name: 'controller.argument_value_resolver', priority: 128 }

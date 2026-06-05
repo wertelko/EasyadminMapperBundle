@@ -1,6 +1,6 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Dto;
+namespace Wertelko\EasyadminMapperBundle\Dto;
 
 use EasyCorp\Bundle\EasyAdminBundle\Collection\ActionCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;

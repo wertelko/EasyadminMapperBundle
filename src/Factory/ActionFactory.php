@@ -1,8 +1,8 @@
 <?php
 
-namespace Wertelko\EasyadminContentBundle\Factory;
+namespace Wertelko\EasyadminMapperBundle\Factory;
 
-use Wertelko\EasyadminContentBundle\Dto\EntityDto;
+use Wertelko\EasyadminMapperBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\ActionCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
