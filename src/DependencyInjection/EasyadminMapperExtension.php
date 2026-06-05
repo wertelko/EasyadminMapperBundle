@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class EasyadminMapperExtension extends Extension implements PrependExtensionInterface
+class EasyadminMapperExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -18,19 +18,5 @@ class EasyadminMapperExtension extends Extension implements PrependExtensionInte
         );
 
         $loader->load('services.yaml');
-    }
-
-    public function prepend(ContainerBuilder $container)
-    {
-        // Register asset package so asset('...', 'EasyadminMapper') works
-        $container->prependExtensionConfig('framework', [
-            'assets' => [
-                'packages' => [
-                    'EasyadminMapper' => [
-                        'base_path' => 'public',
-                    ],
-                ],
-            ],
-        ]);
     }
 }

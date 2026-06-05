@@ -92,6 +92,9 @@ abstract class AbstractMapperController extends AbstractController implements Ma
 
         foreach ($entities as $entity) {
             if (!isset($config)) {
+                if (is_array($entity)) {
+                    $entity = (object) $entity;
+                }
                 if (!is_object($entity)) {
                     continue;
                 }
@@ -100,6 +103,9 @@ abstract class AbstractMapperController extends AbstractController implements Ma
             }
 
             if ($this->isFilterIsPassed($filters, $filtersQuery, $entity)) {
+                if (is_array($entity)) {
+                    $entity = (object) $entity;
+                }
                 $entityDtos[] = $this->makeEntityDto($entity, $config);
             }
 
