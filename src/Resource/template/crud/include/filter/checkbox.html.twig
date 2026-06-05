@@ -1,0 +1,9 @@
+{# @var filter \EasyCorp\Bundle\EasyAdminBundle\Dto\FilterDto #}
+
+<div class="form-group">
+    <label for="filter-{{ filter.property }}">{{ filter.label }}: </label>
+    <input type="checkbox" value="true"
+           {% if filter.formTypeOption('value') %}checked{% endif %}
+           class="form-check-input" name="filters[{{ filter.property }}]" id="filter-{{ filter.property }}"
+           aria-describedby="helpId">
+</div>

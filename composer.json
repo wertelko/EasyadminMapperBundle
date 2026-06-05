@@ -1,0 +1,22 @@
+{
+    "name": "wertelko/easyadmin-mapper",
+    "description": "Simple bundle that allows map objects in the EasyAdmin",
+    "type": "bundle",
+    "keywords": ["easyadmin", "symfony", "content"],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Wertelko\\EasyadminContentBundle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "aleksey",
+            "email": "example@example.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "easycorp/easyadmin-bundle": "^4.8"
+    }
+}

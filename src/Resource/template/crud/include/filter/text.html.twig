@@ -1,0 +1,8 @@
+{# @var filter \EasyCorp\Bundle\EasyAdminBundle\Dto\FilterDto #}
+{% set query_filters = app.request.get('filters') %}
+
+<div class="form-group">
+    <label for="filter-{{ filter.property }}">{{ filter.label }}: </label>
+    <input type="text" value="{{ filter.formTypeOption('value') ?? filter.formTypeOption('empty_data') }}"
+           class="form-control" name="filters[{{ filter.property }}]" id="filter-{{ filter.property }}">
+</div>

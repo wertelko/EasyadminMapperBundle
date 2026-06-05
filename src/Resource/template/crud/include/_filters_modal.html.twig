@@ -1,0 +1,105 @@
+{# @var filter \EasyCorp\Bundle\EasyAdminBundle\Dto\FilterDto #}
+
+<div id="modal-filters" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="{{ ea_url().unset('filters') }}" type="button" data-bs-dismiss="modal"
+                   class="btn btn-sm btn-secondary" id="modal-clear-button"
+                   formtarget="_self">
+                    <i class="fa fa-close"></i> {{ 'filter.button.clear'|trans(domain = 'EasyAdminBundle') }}
+                </a>
+                <h5 class="modal-title">
+                    <i class="fa fa-filter fa-fw"></i> {{ 'filter.title'|trans(domain = 'EasyAdminBundle') }}
+                </h5>
+                <button type="button" data-bs-dismiss="modal" class="btn btn-sm btn-primary" id="modal-apply-button"
+                        formtarget="_self">
+                    <i class="fa fa-check"></i> {{ 'filter.button.apply'|trans(domain = 'EasyAdminBundle') }}
+                </button>
+            </div>
+            <div class="modal-body p-0">
+                <form action="" name="filters" method="get" id="filters" data-ea-filters-form-id="filters">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="filter-field py-1 px-3 pb-2" data-filter-property="name">
+                                {% for filter in filters %}
+                                    <div class="py-2 form-widget">
+                                        {# dump(filter.fqcn) #}
+                                        {% include filter.formTypeOptions['template'] with { filter: filter } %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        window.EasyAdminCustomFilter = new Filter();
+    });
+
+    class Filter {
+        constructor() {
+            this.#createFilters()
+        }
+
+        #createFilters() {
+            const filterButton = document.querySelector('.datagrid-filters .custom-action-filters-buttons');
+            if (null === filterButton) {
+                return;
+            }
+
+            const filterModal = document.querySelector(filterButton.getAttribute('data-bs-target'));
+
+            // this is needed to avoid errors when connection is slow
+            //filterButton.setAttribute('href', filterButton.getAttribute('data-href'));
+            filterButton.removeAttribute('data-href');
+            filterButton.classList.remove('disabled');
+
+            const removeFilter = (filterField) => {
+                filterField.closest('form').querySelectorAll(`input[name^="filters[${filterField.dataset.filterProperty}]"]`).forEach((filterFieldInput) => {
+                    filterFieldInput.remove();
+                });
+
+                filterField.remove();
+            };
+
+            document.querySelector('#modal-clear-button').addEventListener('click', () => {
+                window.location.href = document.querySelector('#modal-clear-button').getAttribute('href');
+                //filterModal.querySelector('form').submit();
+            });
+
+            document.querySelector('#modal-apply-button').addEventListener('click', () => {
+                let link = new URL(window.location.href);
+
+                for (let key of link.searchParams.keys()) {
+                    if (key.startsWith('filters[')) {
+                        link.searchParams.delete(key);
+                    }
+                }
+
+                filterModal.querySelectorAll('input, select').forEach((input) => {
+                    console.log(input);
+
+                    if (input.type === 'checkbox' && input.checked) {
+                        link.searchParams.set(input.name, input.value);
+                    }
+
+                    if (['text', 'datetime-local'].includes(input.type) && '' !== input.value) {
+                        link.searchParams.set(input.name, input.value);
+                    }
+
+                    if (input?.options?.length && '' !== input.value) {
+                        link.searchParams.set(input.name, input[input.selectedIndex].value);
+                    }
+                })
+
+                window.location.href = link.toString();
+            });
+        }
+    }
+</script>

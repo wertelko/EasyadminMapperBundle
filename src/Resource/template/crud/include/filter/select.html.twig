@@ -1,0 +1,15 @@
+{# @var filter \EasyCorp\Bundle\EasyAdminBundle\Dto\FilterDto #}
+
+<div class="form-group">
+    <label for="filter-{{ filter.property }}">{{ filter.label }}: </label>
+    <select class="form-select" name="filters[{{ filter.property }}]" id="filter-{{ filter.property }}">
+        <option value="">NONE</option>
+        {% for option in filter.formTypeOption('value_type_options') %}
+            {% for key, value in option %}
+                <option
+                        {% if (filter.formTypeOption('value') == key or (filter.formTypeOption('empty_data') == key and filter.formTypeOption('value') == null)) %}selected{% endif %}
+                        value="{{ key }}">{{ value }}</option>
+            {% endfor %}
+        {% endfor %}
+    </select>
+</div>
