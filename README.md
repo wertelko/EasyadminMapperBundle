@@ -200,7 +200,7 @@ The bundle automatically registers its services. No additional configuration is 
 
 ## License
 
-This bundle is released under the MIT License. See the [LICENSE](LICENSE) file for details.
+This bundle is released under the MIT License.
 
 ## Contributing
 
@@ -210,14 +210,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 If you encounter any issues or have questions, please [open an issue](https://github.com/wertelko/easyadmin-mapper/issues) on GitHub.
 ```
-
-This README provides:
-
-- Clear installation instructions
-- Quick start guide with a complete example
-- Multiple usage examples (files, API, arrays)
-- Explanation of how the bundle works
-- Configuration details
-- Professional structure with badges and sections
-
-The documentation is comprehensive yet concise, making it easy for developers to understand and use your bundle.
