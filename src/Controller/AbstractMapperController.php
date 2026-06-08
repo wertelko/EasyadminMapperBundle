@@ -2,6 +2,7 @@
 
 namespace Wertelko\EasyadminMapperBundle\Controller;
 
+use EasyCorp\Bundle\EasyAdminBundle\Config\Option\EA;
 use Wertelko\EasyadminMapperBundle\Collection\EntityCollection;
 use Wertelko\EasyadminMapperBundle\Config\EntityConfig;
 use Wertelko\EasyadminMapperBundle\Config\FiltersConfig;
@@ -83,8 +84,9 @@ abstract class AbstractMapperController extends AbstractController implements Ma
     protected function prepareIndex(iterable $entities, string $title = 'Title'): array
     {
         $request = $this->container->get(RequestStack::class)->getCurrentRequest();
-        $fields = FieldCollection::new($this->configureFields(Crud::PAGE_INDEX));
-        $actions = $this->configureActions(Actions::new())->getAsDto(Crud::PAGE_INDEX);
+        $pageName = $request->attributes->get(EA::CRUD_ACTION, Crud::PAGE_INDEX);
+        $fields = FieldCollection::new($this->configureFields($pageName));
+        $actions = $this->configureActions(Actions::new())->getAsDto($pageName);
         $filtersQuery = $request->get('filters', []);
         $filters = $this->container->get(FilterFactory::class)->create($this->configureFilters(FiltersConfig::new())->getFilters(), $filtersQuery);
 
