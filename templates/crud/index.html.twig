@@ -180,7 +180,7 @@
         {% endblock delete_form %}
 
         {% if has_filters %}
-            {% include 'admin/crud/include/_filters_modal.html.twig' with filters %}
+            {% include '@EasyadminMapper/crud/include/_filters_modal.html.twig' with filters %}
         {% endif %}
 
         {% if has_batch_actions %}

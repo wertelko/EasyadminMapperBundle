@@ -25,7 +25,6 @@
                             <div class="filter-field py-1 px-3 pb-2" data-filter-property="name">
                                 {% for filter in filters %}
                                     <div class="py-2 form-widget">
-                                        {# dump(filter.fqcn) #}
                                         {% include filter.formTypeOptions['template'] with { filter: filter } %}
                                     </div>
                                 {% endfor %}

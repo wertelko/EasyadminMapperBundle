@@ -209,4 +209,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Support
 
 If you encounter any issues or have questions, please [open an issue](https://github.com/wertelko/easyadmin-mapper/issues) on GitHub.
-```

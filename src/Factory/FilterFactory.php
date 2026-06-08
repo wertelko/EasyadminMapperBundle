@@ -11,10 +11,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 class FilterFactory
 {
     private const TEMPLATES = [
-        TextFilter::class => 'admin/crud/include/filter/text.html.twig',
-        BooleanFilter::class => 'admin/crud/include/filter/checkbox.html.twig',
-        ArrayFilter::class => 'admin/crud/include/filter/select.html.twig',
-        DateTimeFilter::class => 'admin/crud/include/filter/datetime.html.twig',
+        TextFilter::class => '@EasyadminMapper/crud/include/filter/text.html.twig',
+        BooleanFilter::class => '@EasyadminMapper/crud/include/filter/checkbox.html.twig',
+        ArrayFilter::class => '@EasyadminMapper/crud/include/filter/select.html.twig',
+        DateTimeFilter::class => '@EasyadminMapper/crud/include/filter/datetime.html.twig',
     ];
 
     /**
