@@ -3,16 +3,16 @@
 <div id="modal-filters" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header justify-content-between">
                 <a href="{{ ea_url().unset('filters') }}" type="button" data-bs-dismiss="modal"
-                   class="btn btn-sm btn-secondary" id="modal-clear-button"
+                   class="btn btn-secondary" id="modal-clear-button"
                    formtarget="_self">
                     <i class="fa fa-close"></i> {{ 'filter.button.clear'|trans(domain = 'EasyAdminBundle') }}
                 </a>
                 <h5 class="modal-title">
                     <i class="fa fa-filter fa-fw"></i> {{ 'filter.title'|trans(domain = 'EasyAdminBundle') }}
                 </h5>
-                <button type="button" data-bs-dismiss="modal" class="btn btn-sm btn-primary" id="modal-apply-button"
+                <button type="button" data-bs-dismiss="modal" class="btn btn-primary" id="modal-apply-button"
                         formtarget="_self">
                     <i class="fa fa-check"></i> {{ 'filter.button.apply'|trans(domain = 'EasyAdminBundle') }}
                 </button>
