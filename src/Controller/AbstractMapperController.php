@@ -87,7 +87,7 @@ abstract class AbstractMapperController extends AbstractController implements Ma
         $pageName = $request->attributes->get(EA::CRUD_ACTION, Crud::PAGE_INDEX);
         $fields = FieldCollection::new($this->configureFields($pageName));
         $actions = $this->configureActions(Actions::new())->getAsDto($pageName);
-        $filtersQuery = $request->get('filters', []);
+        $filtersQuery = $request->query->all('filters');
         $filters = $this->container->get(FilterFactory::class)->create($this->configureFilters(FiltersConfig::new())->getFilters(), $filtersQuery);
 
         $entityDtos = [];
