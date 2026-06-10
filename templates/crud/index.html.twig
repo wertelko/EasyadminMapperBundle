@@ -77,6 +77,12 @@
                         {% set ea_sort_desc = constant('EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Option\\SortOrder::DESC') %}
                         {% for field in entities|first.fields ?? [] %}
                             {% if field.displayedOn.has(constant('EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Crud::PAGE_INDEX')) %}
+                                {% for k, v in field.assets.jsAssets %}
+                                    <script src="{{ asset(k) }}"></script>
+                                {% endfor %}
+                                {% for k, v in field.assets.cssAssets %}
+                                    <link rel="stylesheet" href="{{ asset(k) }}">
+                                {% endfor %}
                                 <th data-column="{{ field.property }}"
                                     class="{{ field.isVirtual ? 'field-virtual' }} header-for-{{ field.cssClass|split(' ')|filter(class => class starts with 'field-')|join('') }} text-{{ field.textAlign }}"
                                     dir="{{ ea.i18n.textDirection }}">

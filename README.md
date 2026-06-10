@@ -1,5 +1,10 @@
 # EasyAdmin Mapper Bundle
 
+## Be careful, this is an experimental  bundle
+- no tests
+- a lot of bugs
+- confusing structure
+
 A Symfony bundle that extends [EasyAdmin](https://github.com/EasyCorp/EasyAdminBundle) to work with **any data source** — files, APIs, arrays, or custom iterators — without requiring Doctrine ORM.
 
 ## Features
@@ -37,10 +42,9 @@ return [
 ];
 ```
 
+## Usage Examples
 
-## Quick Start
-
-Create a controller that extends `AbstractMapperController` and implements `MapperControllerInterface`:
+Create a controller that extends `AbstractMapperController`:
 
 ```php
 <?php
@@ -57,10 +61,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Wertelko\EasyadminMapperBundle\Contract\MapperControllerInterface;
 use Wertelko\EasyadminMapperBundle\Controller\AbstractMapperController;
 
-class TestController extends AbstractMapperController implements MapperControllerInterface
+class TestController extends AbstractMapperController
 {
     public function configureActions(Actions $actions): Actions
     {
@@ -122,8 +125,6 @@ class TestController extends AbstractMapperController implements MapperControlle
 }
 ```
 
-## Usage Examples
-
 ### Working with API Data
 
 ```php
@@ -135,10 +136,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Wertelko\EasyadminMapperBundle\Contract\MapperControllerInterface;
 use Wertelko\EasyadminMapperBundle\Controller\AbstractMapperController;
 
-class UsersController extends AbstractMapperController implements MapperControllerInterface
+class UsersController extends AbstractMapperController
 {
     public function __construct(
         private HttpClientInterface $httpClient
@@ -183,6 +183,65 @@ public function logs(): Response
     ];
 
     return $this->renderTable($logs);
+}
+```
+
+### Working with Filters
+
+```php
+<?php
+
+namespace App\Controller\Admin;
+
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Wertelko\EasyadminMapperBundle\Controller\AbstractMapperController;
+use Wertelko\EasyadminMapperBundle\Config\FiltersConfig;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\ArrayFilter;
+use Wertelko\EasyadminMapperBundle\Dto\Filter\FilterDto;
+
+class UsersController extends AbstractMapperController
+{
+    public function __construct(
+        private HttpClientInterface $httpClient
+    ) {}
+
+    public function configureFields(string $pageName): iterable
+    {
+        yield IdField::new('id');
+        yield TextField::new('name');
+        yield EmailField::new('email');
+    }
+
+    #[Route('/admin/api-users', name: 'admin_api_users')]
+    public function index(FilterDto $filterDto): Response
+    {
+        // Preprocess request if you need
+        if ($role = $filterDto->get('role')) {
+            $response = $this->httpClient->request('GET', 'https://api.example.com/users?role=' . $role);
+        } else {
+            $response = $this->httpClient->request('GET', 'https://api.example.com/users');
+        }
+        
+        
+        $users = $response->toArray();
+
+        return $this->renderTable($users);
+    }
+    
+    public function configureFilters(FiltersConfig $filters): FiltersConfig
+    {
+        return $filters->add(
+            ArrayFilter::new('role')->setChoices(['admin' => 'admin', 'user' => 'user'])
+            fn($item, $filterValue) => dd($item, $filterValue) // should return true for pass item in to table,
+            // this callback run after (postprocess) get data from API
+            // you can omit this callback
+            // and catch filter values in controller with FilterDto for preprocess request
+
+        );
+    }
 }
 ```
 
