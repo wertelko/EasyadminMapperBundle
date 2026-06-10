@@ -116,6 +116,7 @@
                         {% for field in entity.fields %}
                             {% if field.displayedOn.has(constant('EasyCorp\\Bundle\\EasyAdminBundle\\Config\\Crud::PAGE_INDEX')) %}
                                 <td data-column="{{ field.property }}"
+                                    {% for name, value in field.htmlAttributes %}{{ name }}="{{ value|e('html_attr') }}" {% endfor %}
                                     data-label="{{ field.label|trans|e('html_attr') }}"
                                     class="{{ field.property == sort_field_name ? 'sorted' }} text-{{ field.textAlign }} {{ field.cssClass }}"
                                     dir="{{ ea.i18n.textDirection }}">
