@@ -84,7 +84,7 @@ abstract class AbstractMapperController extends AbstractController implements Ma
     protected function prepareIndex(iterable $entities, string $title = 'Title'): array
     {
         $request = $this->container->get(RequestStack::class)->getCurrentRequest();
-        $pageName = $request->attributes->get(EA::CRUD_ACTION, Crud::PAGE_INDEX);
+        $pageName = $request->query->get(EA::CRUD_ACTION, Crud::PAGE_INDEX);
         $fields = FieldCollection::new($this->configureFields($pageName));
         $actions = $this->configureActions(Actions::new())->getAsDto($pageName);
         $filtersQuery = $request->query->all('filters');
